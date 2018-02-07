@@ -1,0 +1,19 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Node.js application that connects the react-pos app to database",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kohwo Orien",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^2.6.0",
+    "express": "^4.16.2",
+    "http": "0.0.0",
+    "nedb": "^1.8.0",
+    "path": "^0.12.7",
+    "socket.io": "^2.0.4"
+  }
+}
