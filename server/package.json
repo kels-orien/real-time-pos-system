@@ -10,9 +10,11 @@
   "license": "MIT",
   "dependencies": {
     "async": "^2.6.0",
+    "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "http": "0.0.0",
     "nedb": "^1.8.0",
+    "nodemon": "^1.14.12",
     "path": "^0.12.7",
     "socket.io": "^2.0.4"
   }
