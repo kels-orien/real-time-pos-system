@@ -3,7 +3,6 @@
 # dependencies
 /react-pos/node_modules
 /server/node_modules
-/server/api
 /server/databases
 
 
