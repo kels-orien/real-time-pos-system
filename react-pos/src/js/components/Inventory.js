@@ -27,12 +27,9 @@ class Inventory extends Component {
   }
   componentWillMount() {
     var url = HOST + `/api/inventory/products`;
-    axios
-      .get(url)
-      .then(response => this.setState({ products: response.data }))
-      .catch(err => {
-        console.log(err);
-      });
+    axios.get(url).then(response => {
+      this.setState({ products: response.data });
+    });
   }
   handleNewProduct = e => {
     e.preventDefault();
@@ -83,9 +80,9 @@ class Inventory extends Component {
   };
   handleSnackbar = () => {
     var bar = document.getElementById("snackbar");
-    bar.classNameName = "show";
+    bar.className = "show";
     setTimeout(function() {
-      bar.classNameName = bar.classNameName.replace("show", "");
+      bar.className = bar.className.replace("show", "");
     }, 3000);
   };
 
@@ -106,17 +103,17 @@ class Inventory extends Component {
       <div>
         <Header />
 
-        <div className="container">
+        <div class="container">
           <a
-            className="btn btn-success pull-right"
+            class="btn btn-success pull-right"
             onClick={() => this.setState({ productFormModal: true })}
           >
-            <i className="glyphicon glyphicon-plus" /> Add New Item
+            <i class="glyphicon glyphicon-plus" /> Add New Item
           </a>
           <br />
           <br />
 
-          <table className="table">
+          <table class="table">
             <thead>
               <tr>
                 <th scope="col">Name</th>
@@ -134,42 +131,42 @@ class Inventory extends Component {
             <Modal.Title>Add Product</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <form className="form-horizontal" name="newProductForm">
-              <div className="form-group">
-                <label className="col-md-4 control-label" for="barcode">
+            <form class="form-horizontal" name="newProductForm">
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="barcode">
                   Barcode
                 </label>
-                <div className="col-md-4">
+                <div class="col-md-4">
                   <input
                     id="barcode"
                     name="barcode"
                     placeholder="Barcode"
-                    className="form-control"
+                    class="form-control"
                   />
                 </div>
               </div>
-              <div className="form-group">
-                <label className="col-md-4 control-label" for="name">
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="name">
                   Name
                 </label>
-                <div className="col-md-4">
+                <div class="col-md-4">
                   <input
                     name="name"
                     placeholder="Name"
-                    className="form-control"
+                    class="form-control"
                     onChange={this.handleName}
                   />
                 </div>
               </div>
-              <div className="form-group">
-                <label className="col-md-4 control-label" for="price">
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="price">
                   Price
                 </label>
-                <div className="col-md-4">
+                <div class="col-md-4">
                   <input
                     name="price"
                     placeholder="Price"
-                    className="form-control"
+                    class="form-control"
                     onChange={this.handlePrice}
                     type="number"
                     step="any"
@@ -177,27 +174,24 @@ class Inventory extends Component {
                   />
                 </div>
               </div>
-              <div className="form-group">
-                <label
-                  className="col-md-4 control-label"
-                  for="quantity_on_hand"
-                >
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="quantity_on_hand">
                   Quantity On Hand
                 </label>
-                <div className="col-md-4">
+                <div class="col-md-4">
                   <input
                     name="quantity_on_hand"
                     placeholder="Quantity On Hand"
                     onChange={this.handleQuantity}
-                    className="form-control"
+                    class="form-control"
                   />
                 </div>
               </div>
-              <div className="form-group">
-                <label className="col-md-4 control-label" for="image">
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="image">
                   Upload Image
                 </label>
-                <div className="col-md-4">
+                <div class="col-md-4">
                   <input type="file" name="image" />
                 </div>
               </div>
