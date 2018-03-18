@@ -83,10 +83,10 @@ app.get("/day-total", function(req, res) {
 
 // GET transactions for a particular date
 app.get("/by-date", function(req, res) {
-  var startDate = new Date(2018, 3, 1);
+  var startDate = new Date();
   startDate.setHours(0, 0, 0, 0);
 
-  var endDate = new Date(2015, 2, 21);
+  var endDate = new Date();
   endDate.setHours(23, 59, 59, 999);
 
   Transactions.find(

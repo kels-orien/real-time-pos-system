@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const Header = () => (
   <div className="text-center">
     <h1>
-      <a href="/#/">Real Time Point Point of Sale System</a>
+      <a href="/#/">Real Time Point of Sale System</a>
     </h1>
 
     <ul className="nav-menu">

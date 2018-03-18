@@ -8,7 +8,8 @@ import LiveTransactions from "./LiveTransactions";
 import moment from "moment";
 
 const HOST = "http://localhost:80";
-var url = HOST + `/api//day-total/`;
+var url = HOST + `/api/all`;
+var socket = io.connect(HOST);
 class LiveCart extends Component {
   constructor(props) {
     super(props);
@@ -16,25 +17,19 @@ class LiveCart extends Component {
   }
   componentWillMount() {
     // console.dir(socket);
-    var trans = [
-      { date: "3/1/2018 9:42 AM", total: "450" },
-      { date: "3/1/2018 10:51 AM", total: "790" }
-    ];
-    const HOST = "http://localhost:80";
-    var url = HOST + `/api//day-total/`;
-    axios.get(url).then(response => {
-      this.setState({ transactions: trans });
-      console.log("response", response.data);
-    });
-
-    var socket = io.connect(HOST);
+    axios
+      .get(url)
+      .then(response => this.setState({ transactions: response.data }))
+      .catch(err => {
+        console.log(err);
+      });
 
     socket.on("update-live-cart-display", liveCart => {
       this.setState({ liveTransactions: liveCart });
     });
   }
   componentWillUnmount() {
-    // socket.disconnect();
+    //socket.disconnect();
     // alert("Disconnecting Socket as component will unmount");
   }
   render() {
@@ -55,9 +50,9 @@ class LiveCart extends Component {
       if (liveTransactions.length === 0) {
         return (
           <div>
-            <div class="col-md-5 pull-right">
+            <div className="col-md-5 pull-right">
               <div>
-                <div class="alert alert-warning text-center" role="alert">
+                <div className="alert alert-warning text-center" role="alert">
                   <strong>Not Active:</strong> No items added at the moment.
                 </div>
               </div>
@@ -73,14 +68,16 @@ class LiveCart extends Component {
     return (
       <div>
         <Header />
-        <div class="livecart">
-          <div class="col-md-5 pull-right">
-            <div class="panel panel-primary">
-              <div class="panel-heading text-center lead">{renderDate()}</div>
+        <div className="livecart">
+          <div className="col-md-5 pull-right">
+            <div className="panel panel-primary">
+              <div className="panel-heading text-center lead">
+                {renderDate()}
+              </div>
 
-              <table class="receipt table table-hover">
+              <table className="receipt table table-hover">
                 <thead>
-                  <tr class="small">
+                  <tr className="small">
                     <th> Quantity </th>
                     <th> Product </th>
                     <th> Price </th>
@@ -90,22 +87,22 @@ class LiveCart extends Component {
               </table>
             </div>
           </div>
-          <div class="col-md-5 pull-left">
-            <div class="panel panel-default">
-              <div class="panel-heading lead text-center">
+          <div className="col-md-5 pull-left">
+            <div className="panel panel-default">
+              <div className="panel-heading lead text-center">
                 Recent Transactions
               </div>
 
-              <div class="panel-body">
-                <div class="text-center">
+              <div className="panel-body">
+                <div className="text-center">
                   <span>Today's Sales</span>
                   <br />
-                  <span class="text-success checkout-total-price">
-                    $<span />
+                  <span className="text-success checkout-total-price">
+                    $0<span />
                   </span>
                 </div>
 
-                <table class="table table-hover table-striped">
+                <table className="table table-hover table-striped">
                   <thead>
                     <tr>
                       <th>Time</th>

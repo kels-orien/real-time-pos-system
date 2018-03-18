@@ -1,11 +1,12 @@
 var express = require("express"),
   http = require("http"),
-  port = 80,
   app = require("express")(),
   server = http.createServer(app),
   bodyParser = require("body-parser"),
   io = require("socket.io")(server),
   liveCart = [];
+
+const PORT = process.env.PORT || 80;
 
 console.log("Real time POS running");
 console.log("Server started");
@@ -59,4 +60,4 @@ io.on("connection", function(socket) {
   });
 });
 
-server.listen(port, () => console.log(`Listening on port ${port}`));
+server.listen(PORT, () => console.log(`Listening on PORT ${PORT}`));

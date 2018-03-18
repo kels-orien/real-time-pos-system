@@ -3,39 +3,42 @@ import "./App.css";
 
 class LivePos extends Component {
   handleChange = (id, itemNumber) => {
-    this.props.onQuantityChange(id, itemNumber);
+    this.props.onChange(id, itemNumber);
   };
   render() {
     const { id, name, price, quantity } = this.props;
     var itemNumber = quantity;
     return (
       <tr>
-        <td class="col-md-2"> {name}</td>
-        <td class="col-md-1"> ${price}</td>
-        <td class="col-md-2">
+        <td className="col-md-2"> {name}</td>
+        <td className="col-md-1"> ${price}</td>
+        <td className="col-md-2">
           <button
-            class="btn btn-sm pull-left"
+            className="btn btn-sm pull-left"
             onClick={() => this.handleChange(id, --itemNumber)}
           >
-            <i class="glyphicon glyphicon-minus" />
+            <i className="glyphicon glyphicon-minus" />
           </button>
 
-          <div class="col-md-6">
+          <div className="col-md-6">
             <input type="number" value={itemNumber} />
           </div>
 
           <button
-            class="btn btn-sm pull-right"
+            className="btn btn-sm pull-right"
             onClick={() => this.handleChange(id, ++itemNumber)}
           >
-            <i class="glyphicon glyphicon-plus" />
+            <i className="glyphicon glyphicon-plus" />
           </button>
         </td>
-        <td class="col-md-2">$0.00</td>
-        <td class="col-md-2">{price}</td>
-        <td class="col-md-2">
-          <button class="btn btn-danger">
-            <i class="glyphicon glyphicon-trash" />
+        <td className="col-md-2">$0.00</td>
+        <td className="col-md-2">{price}</td>
+        <td className="col-md-2">
+          <button
+            className="btn btn-danger"
+            onClick={() => this.handleChange(id, "delete")}
+          >
+            <i className="glyphicon glyphicon-trash" />
           </button>
         </td>
       </tr>

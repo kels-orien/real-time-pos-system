@@ -4,7 +4,8 @@
   "description": "Node.js application that connects the react-pos app to database",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "author": "Kohwo Orien",
   "license": "MIT",
@@ -13,6 +14,7 @@
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "http": "0.0.0",
+    "https": "^1.0.0",
     "nedb": "^1.8.0",
     "nodemon": "^1.14.12",
     "path": "^0.12.7",
